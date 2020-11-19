@@ -71,11 +71,12 @@ def kmeans(k, observaciones):
     medias = generateRandomK(k,observaciones)
     cercanas = findAllNearestMeans(observaciones,medias)
     #do event chedk
-    
-    while event:
+    while True:
         centroides = []
         for media in medias:
             centroides.append(findCentroid(cercanas[media]))
+        if medias == centroides:
+            break
         medias = centroides
         cercanas = findAllNearestMeans(observaciones,medias)
         
